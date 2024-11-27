@@ -68,6 +68,7 @@ class PluginNotifislaConfig extends CommonDBTM {
             'type' => 'number',
             'value' => $data['assigned_percent'],
             'min' => 0,
+            'max' => 100,
             'class' => 'form-control',
              'style' => 'width: 80px;' // Указываем желаемую ширину
         ]);
