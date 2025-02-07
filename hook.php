@@ -115,7 +115,7 @@ function plugin_notifisla_uninstall()
 {
     global $DB;
     CronTask::Unregister('PluginNotifislaTask','addNotification');
-  /*  $tables = [
+   $tables = [
         'configs',
         'users'
       ];
@@ -128,6 +128,6 @@ function plugin_notifisla_uninstall()
           $DB->error()
         );
       }
-    }*/
+    }
     return true;
 }

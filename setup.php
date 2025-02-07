@@ -28,7 +28,7 @@
  *
  * --------------------------------------------------------------------------
  */
-
+use Glpi\Plugin\Hooks;
 define('PLUGIN_NOTIFISLA_VERSION', '0.0.1');
 
 // Minimal GLPI version, inclusive
