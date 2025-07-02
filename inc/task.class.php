@@ -105,6 +105,10 @@ class PluginNotifislaTask extends CommonDBTM
         // Расчет процента выполнения SLA
         $hours = explode(":", $filed['slaremainsfield']); // Преобразование времени в часы
         $number_time = self::$tickets[$item_id]['slas_ttr']['number_time'];
+        if(!$number_time) 
+        {
+          return false;
+        }
         $hours = $hours[0] + ($hours[1] / 60);
         $percent = 100 - (($hours / $number_time * 100)); // Вычисление процента
         self::$tickets[$item_id]['percent'] = round($percent); // Сохранение процента в данных тикета
