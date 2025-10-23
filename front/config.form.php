@@ -18,6 +18,8 @@ if (isset($_POST["update"])) {
    // Сохраняем изменения
    $config->update($params);
  //die(var_dump($config));
+}elseif (isset($_POST['sync_cat'])) {
+  $params['itilcategory_id'] = $_POST['itilcategory_id'];
+  $config->add($params);
 }
-
 Html::back();

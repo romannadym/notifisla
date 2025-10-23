@@ -49,6 +49,18 @@ class PluginNotifislaConfig extends CommonDBTM {
         $config->showFormHeader(['no_header' => true]);
         $field = $config->find(['itilcategory_id' => $ITILCategoryId]);
         $data = current($field);
+        if(!$data)
+        {
+          echo Html::hidden('_glpi_csrf_token', ['value' => Session::getNewCSRFToken()]);
+          echo Html::hidden('itilcategory_id', ['value' => $ITILCategoryId]);
+          echo "<h2 class=\"center\">Категория не связана с плагином \"notifisla\"</h2>";
+          echo Html::submit(__('Связать'), [
+              'name'  => 'sync_cat',
+              'class' => 'center btn btn-primary mt-2'
+          ]);
+          Html::closeForm();
+          return;
+        }
         echo Html::hidden('_glpi_csrf_token', ['value' => Session::getNewCSRFToken()]);
         echo Html::hidden('id', ['value' => $data['id']]);
 
@@ -59,7 +71,6 @@ class PluginNotifislaConfig extends CommonDBTM {
         echo "</tr></thead>";
 
         echo "<tbody>";
-
         // Поле для ввода значения "Не назначен исполнитель"
         echo "<tr class='tab_bg_1'>";
         echo "<td><label for='no_assignee'>" . __(' Не назначен исполнитель по истечении X% от SLA ', 'notifisla') . ":</label></td>";
